@@ -6,15 +6,11 @@ exports.createResponse = (res, message, data) => {
   });
 };
 
-exports.successResponse = (res, message, data) => {
+exports.successResponse = (res, message, add = {}) => {
   const response = {
     message: message,
     success: true,
   };
-  if (data !== undefined) {
-    response.data = data;
-  }
+  Object.assign(response, add);
   return res.status(200).json(response);
 };
-
-
